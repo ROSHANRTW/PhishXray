@@ -1,0 +1,33 @@
+# Environment variables - KABHI GITHUB PE MAT JAAYE
+.env
+.env.local
+.env.production
+
+# ML Model files
+*.pkl
+*.joblib
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Node modules
+node_modules/
+build/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+#extrafiles
+sc/
+*.mp4
+*.pdf
+Screenshot*/

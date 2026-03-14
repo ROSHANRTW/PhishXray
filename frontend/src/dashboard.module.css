@@ -1,0 +1,203 @@
+/* dashboard.module.css - DESKTOP SIDEBAR ALWAYS VISIBLE */
+.dashboard-root {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f7fc;
+}
+
+/* --- Sidebar - ALWAYS visible on desktop --- */
+.profile-sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: linear-gradient(to top, #161668, #0a0a9e);
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  z-index: 100;
+  /* NO position:fixed on desktop - it stays in flex flow */
+}
+.profile-section { text-align: center; margin-bottom: 40px; }
+.profile-img {
+  width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 4px 20px rgba(56,189,248,0.2);
+  transition: transform 0.3s ease;
+}
+.profile-img:hover { transform: scale(1.1); }
+.sidebar-nav ul { list-style: none; padding: 0; width: 100%; }
+.sidebar-nav li {
+  display: flex; align-items: center; padding: 14px 18px;
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+  transition: all 0.3s ease; border-left: 4px solid transparent;
+  margin-bottom: 6px; border-radius: 12px; color: #a7d8ff;
+}
+.sidebar-nav li:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.sidebar-nav li.active {
+  background: #fff; border-left: 4px solid #38bdf8;
+  color: #15156b; font-weight: 700;
+}
+.home-link, .admin-link { color: inherit; text-decoration: none; font-weight: inherit; width: 100%; }
+
+/* --- Main --- */
+.dashboard-main {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+.dashboard-main h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; color: #15156b; text-align: center; }
+.dashboard-main p { color: #555; margin-bottom: 36px; font-size: 1.1rem; text-align: center; }
+
+.scan-container {
+  background: #fff; border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(21,21,107,0.08);
+  padding: 36px; width: 100%; max-width: 600px;
+  display: flex; flex-direction: column; align-items: center;
+  align-self: center;
+}
+
+/* --- Inputs --- */
+.scan-input {
+  width: 100%; padding: 14px 18px; border: 2px solid #e0e5f2;
+  border-radius: 12px; font-size: 1.05rem; margin-bottom: 20px;
+  outline: none; transition: all 0.3s ease; box-sizing: border-box;
+}
+.scan-input:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56,189,248,0.1); }
+.scan-btn {
+  background: linear-gradient(90deg, #15156b 60%, #38bdf8 100%);
+  color: #fff; border: none; padding: 14px 36px; font-size: 1.05rem;
+  font-weight: bold; border-radius: 12px; cursor: pointer;
+  transition: all 0.3s ease; width: 100%;
+}
+.scan-btn:hover { background: linear-gradient(90deg, #38bdf8 0%, #15156b 100%); transform: translateY(-2px); }
+.scan-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+.file-upload-area {
+  width: 100%; border: 2px dashed #d0d8e8; border-radius: 12px;
+  padding: 28px; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; cursor: pointer;
+  transition: all 0.3s ease; margin-bottom: 20px; box-sizing: border-box;
+}
+.file-upload-area.dragging { border-color: #38bdf8; background-color: #f0f8ff; }
+.file-upload-icon { width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.5; }
+.file-upload-text { color: #555; font-weight: 600; }
+.file-upload-text span { color: #15156b; font-weight: 700; }
+.file-upload-hint { font-size: 0.85rem; color: #888; margin-top: 8px; }
+.file-info { margin-top: 12px; font-weight: 600; color: #333; word-break: break-all; }
+
+.spam-scan-container { width: 100%; display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+.spam-scan-container textarea {
+  width: 100%; min-height: 90px; padding: 14px 18px; border: 2px solid #e0e5f2;
+  border-radius: 12px; font-size: 1rem; outline: none;
+  transition: all 0.3s ease; resize: vertical; box-sizing: border-box;
+}
+.spam-scan-container textarea:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56,189,248,0.1); }
+.scan-hint { margin-top: 16px; color: #777; font-size: 0.9rem; text-align: center; }
+
+/* Mobile toggle - HIDDEN on desktop */
+.mobile-menu-toggle { display: none; }
+
+/* Mobile overlay - HIDDEN on desktop */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+/* --- Result Section --- */
+.result-container {
+  margin-top: 28px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 16px;
+  padding: 28px 36px;
+  border-left: 6px solid;
+  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 8px 30px rgba(21,21,107,0.06);
+  background: #fff;
+  box-sizing: border-box;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-grid { display: grid; grid-template-columns: 1fr 180px; gap: 16px; align-items: center; margin-bottom: 16px; }
+.result-grid .verdict-title { font-size: 1.5rem; margin: 0; font-weight: 800; color: inherit; }
+.result-grid .smart-reply { text-align: left; margin: 6px 0 0 0; font-weight: 600; color: rgba(0,0,0,0.65); }
+.result-grid .score-box { background: rgba(0,0,0,0.03); border-radius: 12px; padding: 12px 14px; text-align: center; }
+.score-box .score { font-size: 1.2rem; font-weight: 900; color: inherit; }
+
+.verdict-safe { border-color: #4caf50; color: #1b5e20; }
+.verdict-suspicious { border-color: #fb8c00; color: #6b3e00; }
+.verdict-dangerous { border-color: #f44336; color: #8b1b1b; }
+
+.whois-card { background: #fff; padding: 14px; border-radius: 10px; border: 1px solid rgba(21,21,107,0.06); box-shadow: 0 2px 8px rgba(21,21,107,0.03); margin-bottom: 10px; }
+.whois-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+.whois-row { display: flex; gap: 10px; padding: 6px 4px; align-items: flex-start; }
+.whois-key { width: 140px; min-width: 140px; font-weight: 700; color: #15156b; font-size: 0.9rem; }
+.whois-value { color: #333; word-break: break-word; font-size: 0.9rem; }
+
+.details-section { margin-top: 14px; padding: 14px; background: rgba(0,0,0,0.02); border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); }
+.details-section h4 { margin: 0 0 10px 0; font-size: 1rem; font-weight: 700; color: #15156b; }
+.details-list { list-style: none; padding: 0; margin: 0; }
+.details-list li { padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+.details-list li:last-child { border-bottom: none; }
+.result-loading { margin-top: 28px; text-align: center; font-size: 1.1rem; font-weight: 600; color: #15156b; }
+
+/* ============================================================
+   MOBILE ONLY - max-width: 600px
+   Sirf actual phone pe sidebar hide hoga
+   ============================================================ */
+@media (max-width: 600px) {
+  .dashboard-root { display: block; }
+
+  /* Sidebar fixed + hidden off-screen */
+  .profile-sidebar {
+    position: fixed;
+    top: 0; left: -280px;
+    width: 260px; height: 100vh;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    min-width: unset;
+  }
+
+  .profile-sidebar.open { left: 0; }
+
+  .mobile-overlay { display: block; }
+
+  .mobile-menu-toggle {
+    display: block;
+    position: fixed;
+    top: 14px; left: 14px;
+    z-index: 1001;
+    background: #15156b; color: white;
+    border: none; padding: 10px 16px;
+    border-radius: 8px; font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  }
+
+  .dashboard-main { padding: 70px 14px 24px 14px; width: 100%; }
+  .dashboard-main h1 { font-size: 1.6rem; }
+  .scan-container { padding: 18px 14px; max-width: 100%; }
+  .result-container { max-width: 100%; padding: 14px; margin-top: 18px; }
+  .result-grid { grid-template-columns: 1fr; text-align: center; }
+  .result-grid .smart-reply { text-align: center; }
+  .whois-info { grid-template-columns: 1fr; }
+  .whois-row { flex-direction: column; gap: 2px; }
+  .whois-key { width: auto; }
+}
+
+@media (max-width: 400px) {
+  .dashboard-main h1 { font-size: 1.3rem; }
+  .mobile-menu-toggle { padding: 8px 12px; font-size: 13px; }
+}

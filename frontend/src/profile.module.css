@@ -1,0 +1,117 @@
+/* profile.module.css - MOBILE RESPONSIVE FIXED */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+.container { display: flex; min-height: 100vh; background: linear-gradient(135deg, #1a2a6c, #154198, #0d1763); }
+
+/* Sidebar */
+.profileSidebar {
+  width: 250px;
+  min-width: 250px;
+  background: #fff;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100vh;
+  box-shadow: 3px 0 15px rgba(0,0,0,0.08);
+  transition: left 0.3s ease;
+}
+
+.logo { font-weight: 800; color: #2563eb; font-size: 1.6rem; margin-bottom: 24px; letter-spacing: 1px; text-align: center; }
+
+.nav { display: flex; flex-direction: column; gap: 6px; }
+
+.navLink {
+  color: #4b5563; text-decoration: none; font-weight: 500;
+  padding: 11px 14px; border-radius: 8px; transition: all 0.2s ease;
+  display: flex; align-items: center; gap: 8px;
+  border: none; background: transparent;
+}
+.navLink:hover { background: #f0f7ff; color: #2563eb; }
+.navLink.active { background: #dbeafe; color: #2563eb; font-weight: 700; }
+
+/* Main */
+.main { flex: 1; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 24px; }
+
+.card {
+  background: #fff; border-radius: 16px; padding: 36px;
+  max-width: 860px; width: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin: 0 auto;
+}
+
+.profileHeader { display: flex; flex-direction: column; align-items: center; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #f0f0f0; }
+
+.avatar { width: 110px; height: 110px; border-radius: 50%; border: 4px solid #3b82f6; object-fit: cover; margin-bottom: 16px; }
+
+.profileName { font-size: 1.6rem; font-weight: 700; color: #1f2937; margin-bottom: 6px; }
+.profileEmail { font-size: 1rem; color: #6b7280; }
+
+/* Tabs */
+.tabs { display: flex; justify-content: center; margin-bottom: 22px; border-bottom: 2px solid #e5e7eb; }
+.tabButton { background: none; border: none; padding: 10px 24px; font-weight: 600; color: #6b7280; cursor: pointer; font-size: 1rem; position: relative; }
+.tabButton:hover { color: #3b82f6; }
+.tabButton.activeTab { color: #3b82f6; }
+.tabButton.activeTab::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background: #3b82f6; border-radius: 3px 3px 0 0; }
+
+.tabContent { margin-top: 16px; }
+
+/* Form */
+.formGroup { margin-bottom: 20px; }
+.formGroup label { font-size: 0.95rem; color: #374151; margin-bottom: 6px; display: block; font-weight: 600; }
+.formGroup input, .formGroup select {
+  width: 100%; padding: 12px 16px; background: #f9fafb;
+  border: 2px solid #e5e7eb; border-radius: 10px; font-size: 1rem; transition: all 0.2s;
+}
+.formGroup input:focus, .formGroup select:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+
+/* Buttons */
+.editTextButton { padding: 8px 18px; background: #3b82f6; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+.actionButton { margin-top: 12px; padding: 13px 24px; background: #3b82f6; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1rem; width: 100%; }
+.actionButton:hover { background: #2563eb; }
+.deleteButton { margin-top: 16px; padding: 13px 24px; background: #ef4444; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1rem; width: 100%; }
+.deleteButton:hover { background: #dc2626; }
+.logoutButton { margin-top: 16px; padding: 13px 24px; background: #2563eb; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1rem; width: 100%; }
+.logoutButton:hover { background: #1d4ed8; }
+
+.successMsg { margin-top: 12px; color: #1d4ed8; background: #dbeafe; padding: 10px 16px; border-radius: 8px; font-size: 0.95rem; text-align: center; font-weight: 500; }
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle { display: none !important; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container { display: block; position: relative; }
+
+  .profileSidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+  }
+
+  /* JS sets style left:0 directly when open */
+
+  .mobile-menu-toggle { display: block !important; }
+
+  .main {
+    padding: 70px 14px 24px 14px;
+    align-items: flex-start;
+  }
+
+  .card { padding: 20px 14px; }
+  .profileName { font-size: 1.3rem; }
+  .avatar { width: 90px; height: 90px; }
+  .formGroup input, .formGroup select { padding: 10px 13px; font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: 65px 10px 20px 10px; }
+  .card { padding: 16px 12px; }
+  .profileName { font-size: 1.15rem; }
+  .tabButton { padding: 8px 16px; font-size: 0.9rem; }
+}

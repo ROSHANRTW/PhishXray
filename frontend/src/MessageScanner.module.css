@@ -1,0 +1,129 @@
+.scannerContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.scannerContainer h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.scannerContainer p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  margin: 0 5px;
+  transition: background 0.3s;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+}
+
+.scannerContent {
+  margin-bottom: 20px;
+}
+
+.scannerContent textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.uploadArea {
+  text-align: center;
+  padding: 40px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+}
+
+.uploadArea p {
+  margin-bottom: 10px;
+}
+
+.uploadArea input {
+  margin-top: 10px;
+}
+
+.scanButton {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.scanButton:hover {
+  background: rgba(0, 114, 255, 0.8);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .scannerContainer {
+    padding: 15px;
+    margin: 10px;
+  }
+  .scannerContainer h2 {
+    font-size: 1.5rem;
+  }
+  .scannerContainer p {
+    font-size: 0.9rem;
+  }
+  .tabs {
+    flex-direction: column;
+  }
+  .tab {
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+  .scannerContent textarea {
+    height: 150px;
+  }
+  .uploadArea {
+    padding: 20px;
+  }
+  .scanButton {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scannerContainer {
+    padding: 10px;
+  }
+  .scannerContainer h2 {
+    font-size: 1.3rem;
+  }
+  .scannerContent textarea {
+    height: 120px;
+  }
+}

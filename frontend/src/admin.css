@@ -1,0 +1,75 @@
+.admin-panel {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #0001;
+  padding: 32px;
+}
+.admin-panel h2 {
+  margin-bottom: 24px;
+  color: #1a237e;
+  text-align: center;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.admin-table th, .admin-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  color: #263238; 
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.admin-table td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 300px;
+}
+.admin-table th {
+  background: #f5f7fa;
+  color: #263238;
+}
+.admin-btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.admin-btn:hover {
+  background: #0d47a1;
+}
+.admin-delete {
+  background: #e53935;
+}
+.admin-delete:hover {
+  background: #b71c1c;
+}
+.admin-blocked {
+  color: #e53935;
+  font-weight: bold;
+}
+.admin-active {
+  color: #388e3c;
+  font-weight: bold;
+}
+.admin-msg {
+  margin-bottom: 16px;
+  color: #1976d2;
+  text-align: center;
+}
+.admin-loading {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 1.2rem;
+  color: #1976d2;
+}
