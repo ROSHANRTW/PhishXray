@@ -38,7 +38,7 @@ geoip2==4.8.0
 # Email Analysis
 extract-msg==0.55.0
 oletools==0.60.2
-pdfminer.six==20251107
+pdfminer.six==20231228
 pdfplumber==0.11.4
 
 # Utils
