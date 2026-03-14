@@ -163,11 +163,12 @@ export default function UserProfile() {
       >
         <h2 className={styles.logo}>PHISHXRAY</h2>
         <nav className={styles.nav}>
-          <a href="/" className={styles.navLink} style={{ fontWeight: "bold" }}>🏠 Home</a>
+          <a href="/" onClick={(e) => e.preventDefault()}>
+            🏠 Home
+          </a>
           <a
             href="/dashboard"
-            className={styles.navLink}
-            onClick={() => { window.location.href = "/dashboard"; }}
+            onClick={(e) => e.preventDefault()}
           >
             🔍 Dashboard
           </a>
