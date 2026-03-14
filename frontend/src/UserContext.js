@@ -28,7 +28,7 @@ export function UserProvider({ children }) {
       localStorage.removeItem("user");
       localStorage.removeItem("phishxray_user");
     }
-  }, [token]);
+  }, [token, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Sync user + token with localStorage
   useEffect(() => {

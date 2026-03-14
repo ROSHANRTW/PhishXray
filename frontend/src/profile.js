@@ -172,27 +172,27 @@ export default function UserProfile() {
           >
             🔍 Dashboard
           </a>
-          <a
-            href="#"
+          <button
             className={`${styles.navLink} ${sidebarTab === "profile" ? styles.active : ""}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick("profile"); }}
+            onClick={() => handleNavClick("profile")}
+            style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
             👤 Profile
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
             className={`${styles.navLink} ${sidebarTab === "history" ? styles.active : ""}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick("history"); }}
+            onClick={() => handleNavClick("history")}
+            style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
             📋 Scan History
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
             className={`${styles.navLink} ${sidebarTab === "settings" ? styles.active : ""}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick("settings"); }}
+            onClick={() => handleNavClick("settings")}
+            style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
             ⚙️ Settings
-          </a>
+          </button>
         </nav>
       </aside>
 
