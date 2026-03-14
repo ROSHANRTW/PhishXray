@@ -23,7 +23,16 @@ def create_app():
     mongo.init_app(app)
     
     # CORS
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, 
+         resources={r"/api/*": {"origins": [
+             "https://phishxray.vercel.app",
+             "https://phishxray-aeponwf0l-roshan7.vercel.app",
+             "http://localhost:3000"
+         ]}},
+         supports_credentials=True,
+         allow_headers=["Content-Type", "Authorization"],
+         methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    )
 
     with app.app_context():
         # Import and register blueprints (routes)
