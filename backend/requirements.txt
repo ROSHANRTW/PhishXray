@@ -102,7 +102,6 @@ python-multipart==0.0.6
 python-socketio==5.15.0
 python-whois==0.9.6
 pytz==2025.2
-pywin32==311
 PyYAML==6.0.2
 RapidFuzz==3.14.3
 red-black-tree-mod==1.22
