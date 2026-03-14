@@ -38,8 +38,7 @@ geoip2==4.8.0
 # Email Analysis
 extract-msg==0.55.0
 oletools==0.60.2
-pdfminer.six==20221105
-pdfplumber==0.11.8
+pdfminer.six==20251107
 
 # Utils
 python-dotenv==0.21.0
