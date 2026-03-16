@@ -163,35 +163,32 @@ export default function UserProfile() {
       >
         <h2 className={styles.logo}>PHISHXRAY</h2>
         <nav className={styles.nav}>
-          <a href="/" onClick={(e) => e.preventDefault()}>
-            🏠 Home
+          <a href="/" style={{textDecoration:'none', color:'inherit', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
+            Home
           </a>
-          <a
-            href="/dashboard"
-            onClick={(e) => e.preventDefault()}
-          >
-            🔍 Dashboard
+          <a href="/dashboard" style={{textDecoration:'none', color:'inherit', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
+            Dashboard
           </a>
           <button
             className={`${styles.navLink} ${sidebarTab === "profile" ? styles.active : ""}`}
             onClick={() => handleNavClick("profile")}
             style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
-            👤 Profile
+            Profile
           </button>
           <button
             className={`${styles.navLink} ${sidebarTab === "history" ? styles.active : ""}`}
             onClick={() => handleNavClick("history")}
             style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
-            📋 Scan History
+            Scan History
           </button>
           <button
             className={`${styles.navLink} ${sidebarTab === "settings" ? styles.active : ""}`}
             onClick={() => handleNavClick("settings")}
             style={{background:'none',border:'none',cursor:'pointer',textAlign:'left',width:'100%'}}
           >
-            ⚙️ Settings
+            Settings
           </button>
         </nav>
       </aside>
