@@ -168,6 +168,8 @@
     overflow-y: auto;
     transition: left 0.3s ease;
     min-width: unset;
+    background: linear-gradient(to bottom, #0a0a9e, #161668) !important;
+    color: white !important;
   }
 
   .profile-sidebar.open { left: 0; }
