@@ -23,10 +23,11 @@ def create_app():
     mongo.init_app(app)
     
     # CORS
-    CORS(app, 
+    CORS(app,
          resources={r"/api/*": {"origins": [
              "https://phishxray.vercel.app",
-             "https://phishxray-aeponwf0l-roshan7.vercel.app",
+             "https://phishxray-git-main-roshan7.vercel.app",
+             "https://phishxray-bn3r94hco-roshan7.vercel.app",
              "http://localhost:3000"
          ]}},
          supports_credentials=True,
