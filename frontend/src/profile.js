@@ -163,10 +163,10 @@ export default function UserProfile() {
       >
         <h2 className={styles.logo}>PHISHXRAY</h2>
         <nav className={styles.nav}>
-          <a href="/" style={{textDecoration:'none', color:'inherit', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
+          <a href="/" style={{textDecoration:'none', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
             Home
           </a>
-          <a href="/dashboard" style={{textDecoration:'none', color:'inherit', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
+          <a href="/dashboard" style={{textDecoration:'none', padding:'11px 14px', borderRadius:'8px', display:'block', fontWeight:500, color:'#4b5563', transition:'all 0.2s'}}>
             Dashboard
           </a>
           <button
