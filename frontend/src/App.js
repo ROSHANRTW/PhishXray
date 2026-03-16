@@ -202,7 +202,7 @@ const AppContent = () => {
 
               {/* Footer */}
               <footer>
-                <p>© 2025 PhishXray. All Rights Reserved.</p>
+                <p>© 2026 PhishXray. All Rights Reserved.</p>
                 <div className="footer-links">
                   <span onClick={() => setShowPopup(true)} style={{ cursor: 'pointer', color: 'lightblue', margin: '0 10px' }}>Privacy Policy</span>
                   <span onClick={() => setShowPopup(true)} style={{ cursor: 'pointer', color: 'lightblue', margin: '0 10px' }}>Terms of Service</span>
