@@ -335,104 +335,6 @@ const ScanResult = ({ result }) => {
   );
 };
 
-// --- Toast Notification Component ---
-const Toast = ({ toast, onClose }) => {
-  if (!toast) return null;
-
-  const icons = {
-    error: '😮',
-    success: '😊',
-    info: 'ℹ️',
-    warning: '⚠️',
-  };
-
-  return (
-    <>
-      <style>{`
-        @keyframes toastSlideIn {
-          from { opacity: 0; transform: translateX(120%); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes toastSlideOut {
-          from { opacity: 1; transform: translateX(0); }
-          to   { opacity: 0; transform: translateX(120%); }
-        }
-        .phish-toast {
-          position: fixed;
-          top: 24px;
-          right: 24px;
-          z-index: 9999;
-          min-width: 280px;
-          max-width: 340px;
-          background: linear-gradient(135deg, #15156b 0%, #1a237e 60%, #1565c0 100%);
-          border-radius: 16px;
-          padding: 20px 20px 18px 20px;
-          box-shadow: 0 8px 32px rgba(21,21,107,0.35);
-          animation: toastSlideIn 0.4s cubic-bezier(.22,1,.36,1) forwards;
-          border: 1px solid rgba(255,255,255,0.12);
-        }
-        .phish-toast.hiding {
-          animation: toastSlideOut 0.35s ease forwards;
-        }
-        .phish-toast-icon {
-          font-size: 2.2rem;
-          text-align: center;
-          margin-bottom: 10px;
-          display: block;
-        }
-        .phish-toast-title {
-          font-size: 1rem;
-          font-weight: 800;
-          color: #38bdf8;
-          text-align: center;
-          margin-bottom: 6px;
-          letter-spacing: 0.3px;
-        }
-        .phish-toast-msg {
-          font-size: 0.88rem;
-          color: rgba(255,255,255,0.85);
-          text-align: center;
-          line-height: 1.5;
-          margin: 0;
-        }
-        .phish-toast-close {
-          position: absolute;
-          top: 10px; right: 12px;
-          background: rgba(255,255,255,0.15);
-          border: none;
-          color: #fff;
-          width: 24px; height: 24px;
-          border-radius: 50%;
-          font-size: 14px;
-          cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          transition: background 0.2s;
-        }
-        .phish-toast-close:hover { background: rgba(255,255,255,0.3); }
-        .phish-toast-bar {
-          position: absolute;
-          bottom: 0; left: 0;
-          height: 3px;
-          background: #38bdf8;
-          border-radius: 0 0 16px 16px;
-          animation: toastBar 3s linear forwards;
-        }
-        @keyframes toastBar {
-          from { width: 100%; }
-          to   { width: 0%; }
-        }
-      `}</style>
-      <div className={`phish-toast ${toast.hiding ? 'hiding' : ''}`} style={{ position: 'fixed' }}>
-        <button className="phish-toast-close" onClick={onClose}>✕</button>
-        <span className="phish-toast-icon">{icons[toast.type] || '😮'}</span>
-        <div className="phish-toast-title">{toast.title}</div>
-        <p className="phish-toast-msg">{toast.message}</p>
-        <div className="phish-toast-bar" />
-      </div>
-    </>
-  );
-};
-
 // --- Main Dashboard Component ---
 export default function Dashboard() {
   const [selected, setSelected] = useState("website");
@@ -441,24 +343,7 @@ export default function Dashboard() {
   const [scanFile, setScanFile] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [toast, setToast] = useState(null);
-  const toastTimer = useRef(null);
-
-  const showToast = (type, title, message) => {
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    setToast({ type, title, message, hiding: false });
-    toastTimer.current = setTimeout(() => {
-      setToast(t => t ? { ...t, hiding: true } : null);
-      setTimeout(() => setToast(null), 400);
-    }, 3000);
-  };
-
-  const closeToast = () => {
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    setToast(t => t ? { ...t, hiding: true } : null);
-    setTimeout(() => setToast(null), 400);
-  };
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Add this for mobile toggle
 
   useEffect(() => { AOS.init({ duration: 700 }); }, []);
 
@@ -471,12 +356,12 @@ export default function Dashboard() {
 
   const handleScan = async () => {
     const currentToken = token || localStorage.getItem('token');
-    if (!currentToken) { showToast('error', 'Auth Error!', 'Please log out and log in again.'); return; }
+    if (!currentToken) { alert("Authentication Error: Please log out and log in again."); return; }
 
     // ── Spam / Message Scan: needs either text OR image ──────────────────────
     if (selected === 'spam') {
       if (!scanValue && !scanFile) {
-        showToast('info', 'Input Required!', 'Please paste a message or upload a screenshot.');
+        alert("Please paste a message or upload a screenshot.");
         return;
       }
       setIsScanning(true);
@@ -527,14 +412,14 @@ export default function Dashboard() {
     }
 
     // ── Other scan types ──────────────────────────────────────────────────────
-    if (!scanValue && !scanFile) { showToast('info', 'Input Required!', 'Please enter something to scan first.'); return; }
+    if (!scanValue && !scanFile) { alert("Please enter something to scan."); return; }
 
     setIsScanning(true);
 
     // Handle email file uploads (multipart/form-data)
     if (selected === 'email') {
       if (!scanFile) {
-        showToast('info', 'File Required!', 'Please upload an email file (.eml or .msg) to scan.');
+        alert("Please upload an email file (.eml or .msg) to scan.");
         setIsScanning(false);
         return;
       }
@@ -581,7 +466,7 @@ export default function Dashboard() {
       endpoint = `${API_BASE}/api/scan/link`;
       body = { url: scanValue };
     } else {
-      showToast('warning', 'Coming Soon!', `${selected.charAt(0).toUpperCase() + selected.slice(1)} scan is not yet implemented.`);
+      alert(`${selected.charAt(0).toUpperCase() + selected.slice(1)} scan is not yet implemented.`);
       setIsScanning(false);
       return;
     }
@@ -615,7 +500,6 @@ export default function Dashboard() {
 
   return (
     <div className={styles["dashboard-root"]}>
-      <Toast toast={toast} onClose={closeToast} />
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div 
@@ -624,7 +508,7 @@ export default function Dashboard() {
         />
       )}
       
-      <aside className={`${styles["profile-sidebar"]} ${sidebarOpen ? styles.open : ''}`} data-aos="fade-right">
+      <aside className={`${styles["profile-sidebar"]} ${sidebarOpen ? styles.open : ''}`} style={{ background: 'linear-gradient(to bottom, #0a0a9e, #161668)', color: 'white' }}>
         <div className={styles["profile-section"]}>
           <Link to="/profile">
             <img
@@ -647,7 +531,7 @@ export default function Dashboard() {
         </nav>
       </aside>
 
-      <main className={styles["dashboard-main"]} data-aos="fade-left">
+      <main className={styles["dashboard-main"]}>
         {/* Mobile Menu Toggle */}
         <button 
           className={styles["mobile-menu-toggle"]} 
