@@ -57,6 +57,10 @@ const AppContent = () => {
   const navigate = useNavigate();
   const { user } = useUser();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const avatarSrc = !user
     ? "/images/defaultprofile.jpg"
     : user.gender === "Female"
@@ -77,10 +81,9 @@ const AppContent = () => {
           element={
             <>
               <nav className="navbar">
-                <div className="logo">PhishXray</div>
+                <div className="logo" onClick={scrollToTop} style={{ cursor: 'pointer' }}>PhishXray</div>
                 <div className={`nav-container${navOpen ? ' open' : ''}`}>
                   <ul className={`nav-links${navOpen ? ' open' : ''}`}>
-                    <li><Link to="/" onClick={() => setNavOpen(false)}>Home</Link></li>
                     <li><Link to="/dashboard" onClick={() => setNavOpen(false)}>Scan</Link></li>
                     <li onClick={() => { setNavOpen(false); setShowPopup(true); }} style={{ cursor: 'pointer' }}>Community</li>
                   </ul>
@@ -202,7 +205,7 @@ const AppContent = () => {
 
               {/* Footer */}
               <footer>
-                <p>© 2026 PhishXray. All Rights Reserved.</p>
+                <p>© 2025 PhishXray. All Rights Reserved.</p>
                 <div className="footer-links">
                   <span onClick={() => setShowPopup(true)} style={{ cursor: 'pointer', color: 'lightblue', margin: '0 10px' }}>Privacy Policy</span>
                   <span onClick={() => setShowPopup(true)} style={{ cursor: 'pointer', color: 'lightblue', margin: '0 10px' }}>Terms of Service</span>
