@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+/* ============================================================
+   DESKTOP — Bilkul same purana
+   ============================================================ */
 .signup-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(to right, #0a0a9e, #161668);
-  overflow: hidden;
   font-family: 'Poppins', sans-serif;
+  padding: 20px 0;
 }
 
 .signup-wrapper .container {
   width: 900px;
-  height: 550px;
+  min-height: 550px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 30px;
@@ -29,7 +32,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.8s ease-in-out;
 }
 
 .signup-wrapper .left {
@@ -42,58 +44,13 @@
   color: #222;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-}
-
-@media (max-width: 950px) {
-  .signup-wrapper .container {
-    width: 98vw;
-    height: auto;
-    flex-direction: column;
-    min-height: 600px;
-  }
-  .signup-wrapper .left,
-  .signup-wrapper .right {
-    padding: 30px 10px;
-    border-radius: 0;
-  }
-  .signup-wrapper .right {
-    border-radius: 0 0 30px 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .signup-wrapper .container {
-    width: 95vw;
-    padding: 20px;
-  }
-  .signup-wrapper .left,
-  .signup-wrapper .right {
-    padding: 20px;
-  }
-  .signup-wrapper h2 { font-size: 1.5rem; }
-  .signup-wrapper p { font-size: 0.9rem; }
-  .signup-wrapper .input-group input { padding: 10px; font-size: 13px; }
-  .signup-wrapper .btn { padding: 10px; font-size: 14px; }
-  .signup-wrapper .social-login { flex-direction: column; }
-  .signup-wrapper .social-login button { margin: 5px 0; }
-}
-
-@media (max-width: 480px) {
-  .signup-wrapper .container {
-    width: 100vw;
-    border-radius: 0;
-  }
-  .signup-wrapper .left,
-  .signup-wrapper .right { padding: 15px; }
-  .signup-wrapper h2 { font-size: 1.3rem; }
-  .signup-wrapper .input-group input { padding: 8px; }
-  .signup-wrapper .btn { padding: 8px; }
+  align-items: center;
 }
 
 .signup-wrapper h2 { font-size: 2rem; margin-bottom: 10px; }
 .signup-wrapper p { margin-bottom: 20px; }
-.signup-wrapper .input-group { margin-bottom: 15px; }
 
+.signup-wrapper .input-group { margin-bottom: 15px; }
 .signup-wrapper .input-group input {
   width: 100%;
   padding: 12px;
@@ -103,46 +60,138 @@
   background: rgba(255, 255, 255, 0.2);
   color: white;
   font-size: 14px;
+  box-sizing: border-box;
 }
-
 .signup-wrapper .input-group input::placeholder { color: #eee; }
 
+/* Fixed height button — no jump */
 .signup-wrapper .btn {
   width: 100%;
-  padding: 12px;
+  height: 46px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(90deg, #00c6ff, #0072ff);
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.signup-wrapper .btn:hover {
-  background: rgba(0, 114, 255, 0.6);
-  backdrop-filter: blur(4px);
-}
-
-.signup-wrapper .switch { margin-top: 20px; font-size: 14px; }
-.signup-wrapper .switch span { color: #00c6ff; cursor: pointer; }
-
-.signup-wrapper .social-login {
-  margin-top: 15px;
+  transition: background 0.3s ease;
+  font-size: 15px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
+.signup-wrapper .btn:hover { background: rgba(0, 114, 255, 0.7); }
 
+.signup-wrapper .switch { margin-top: 16px; font-size: 14px; }
+.signup-wrapper .switch span { color: #00c6ff; cursor: pointer; font-weight: 600; }
+
+.signup-wrapper .social-login { margin-top: 14px; display: flex; justify-content: space-between; }
 .signup-wrapper .social-login button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: white;
-  color: #333;
-  font-weight: 600;
-  cursor: pointer;
+  flex: 1; margin: 0 5px; padding: 10px;
+  border-radius: 10px; border: none;
+  background: white; color: #333; font-weight: 600; cursor: pointer;
 }
 
 .signup-wrapper #authBox { transition: all 0.6s ease; }
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+@media (max-width: 950px) {
+  .signup-wrapper .container {
+    width: 95vw;
+    min-height: auto;
+  }
+}
+
+/* ============================================================
+   MOBILE — Same colors, single column, image jaisa feel
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .signup-wrapper {
+    padding: 24px 16px;
+    align-items: center;
+  }
+
+  .signup-wrapper .container {
+    width: 100%;
+    max-width: 420px;
+    min-height: auto;
+    flex-direction: column;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+  }
+
+  /* Hide right panel (animation/welcome) on mobile */
+  .signup-wrapper .right {
+    display: none;
+  }
+
+  /* Left panel full width */
+  .signup-wrapper .left {
+    width: 100%;
+    padding: 36px 28px 32px;
+    border-radius: 24px;
+  }
+
+  .signup-wrapper h2 { font-size: 1.7rem; margin-bottom: 6px; }
+  .signup-wrapper p { font-size: 0.88rem; margin-bottom: 22px; color: rgba(255,255,255,0.75); }
+
+  /* Inputs — same color, better mobile size */
+  .signup-wrapper .input-group { margin-bottom: 16px; }
+  .signup-wrapper .input-group input {
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .signup-wrapper .input-group input:focus {
+    border-color: rgba(0, 198, 255, 0.6);
+    background: rgba(0, 198, 255, 0.08);
+    outline: none;
+  }
+  .signup-wrapper .input-group input::placeholder { color: rgba(255,255,255,0.45); }
+
+  /* Button */
+  .signup-wrapper .btn {
+    height: 50px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 4px;
+    -webkit-appearance: none;
+    touch-action: manipulation;
+  }
+
+  /* Switch */
+  .signup-wrapper .switch {
+    text-align: center;
+    margin-top: 18px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Social */
+  .signup-wrapper .social-login {
+    flex-direction: column;
+    margin-top: 16px;
+  }
+  .signup-wrapper .social-login button {
+    margin: 4px 0;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .signup-wrapper .left { padding: 28px 20px 26px; }
+  .signup-wrapper h2 { font-size: 1.5rem; }
+  .signup-wrapper .input-group input { font-size: 16px; } /* iOS zoom fix */
+}
