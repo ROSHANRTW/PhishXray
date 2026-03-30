@@ -158,17 +158,6 @@ npm start
 
 ---
 
-## 🔑 Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | MongoDB connection string |
-| `GOOGLE_API_KEY` | Google Safe Browsing API key |
-| `JWT_SECRET` | Secret key for JWT tokens |
-| `PORT` | Backend port (default: 8080) |
-
-> ⚠️ **Never commit `.env` to GitHub!**
-
 ---
 
 ## 📊 Detection Layers
