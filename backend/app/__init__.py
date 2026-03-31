@@ -25,10 +25,7 @@ def create_app():
     # CORS
     CORS(app,
          resources={r"/api/*": {"origins": [
-             "https://phishxray.vercel.app",
-             "https://phishxray-git-main-roshan7.vercel.app",
-             "https://phishxray-bn3r94hco-roshan7.vercel.app",
-             "http://localhost:3000"
+             "https://phishxray-backend.onrender.com"
          ]}},
          supports_credentials=True,
          allow_headers=["Content-Type", "Authorization"],
