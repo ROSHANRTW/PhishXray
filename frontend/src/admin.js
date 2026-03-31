@@ -116,6 +116,7 @@ export default function AdminPanel() {
   }, [token]);
 
   useEffect(() => {
+    if (!user && !token) { navigate('/signup'); return; }
     if (user && !user.isAdmin) { navigate('/forbidden'); return; }
     if (user && token) { fetchUsers(); fetchStats(); fetchScans(); }
     else { setLoading(false); }

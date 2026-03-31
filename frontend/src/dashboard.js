@@ -397,6 +397,14 @@ export default function Dashboard() {
 
         const resultPayload = (data && typeof data === 'object') ? (data.result ?? data) : data;
 
+        // 💥 HANDLE TOKEN EXPIRE
+        if (response.status === 401) {
+          alert("Session expired. Please login again.");
+          localStorage.removeItem("token");
+          window.location.href = "/signup";
+          return;
+        }
+
         if (!response.ok || (data && data.success === false)) {
           throw new Error((data && data.message) || `Scan failed (status ${response.status})`);
         }
@@ -441,6 +449,14 @@ export default function Dashboard() {
 
         const resultPayload = (data && typeof data === 'object') ? (data.result ?? data) : data;
 
+        // 💥 HANDLE TOKEN EXPIRE
+        if (response.status === 401) {
+          alert("Session expired. Please login again.");
+          localStorage.removeItem("token");
+          window.location.href = "/signup";
+          return;
+        }
+
         if (!response.ok || (data && data.success === false)) {
           throw new Error((data && data.message) || `Scan failed (status ${response.status})`);
         }
@@ -484,6 +500,14 @@ export default function Dashboard() {
       console.log('[scan] status:', response.status, 'data:', data);
 
       const resultPayload = (data && typeof data === 'object') ? (data.result ?? data) : data;
+
+      // 💥 HANDLE TOKEN EXPIRE
+      if (response.status === 401) {
+        alert("Session expired. Please login again.");
+        localStorage.removeItem("token");
+        window.location.href = "/signup";
+        return;
+      }
 
       if (!response.ok || (data && data.success === false)) {
         throw new Error((data && data.message) || `Scan failed (status ${response.status})`);
