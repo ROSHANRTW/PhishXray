@@ -3,52 +3,28 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    try {
-      const raw =
-        localStorage.getItem("user") || localStorage.getItem("phishxray_user");
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-      console.warn("Failed to parse user from localStorage", e);
-      return null;
-    }
-  });
+  const [user, setUser] = useState(null);
 
-  const [token, setToken] = useState(() => {
-    return localStorage.getItem("token") || null;
-  });
+  const [token, setToken] = useState(null);
 
-  // Validate token on app load
+  // Validate in-memory auth state
   useEffect(() => {
-    if (token) {
-      // Here you could add token validation logic (ping server etc.)
-    } else if (user) {
-      // If we have user but no token -> clear
+    if (!token && user) {
+      // If we have user but no token -> clear in-memory state
       setUser(null);
-      localStorage.removeItem("user");
-      localStorage.removeItem("phishxray_user");
     }
   }, [token, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Sync user + token with localStorage
+  // Remove legacy persisted auth data (security hardening)
   useEffect(() => {
     try {
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-      } else {
-        localStorage.removeItem("user");
-        localStorage.removeItem("phishxray_user");
-      }
-
-      if (token) {
-        localStorage.setItem("token", token);
-      } else {
-        localStorage.removeItem("token");
-      }
+      localStorage.removeItem("user");
+      localStorage.removeItem("phishxray_user");
+      localStorage.removeItem("token");
     } catch (e) {
-      console.warn("UserContext localStorage sync error", e);
+      console.warn("UserContext localStorage cleanup error", e);
     }
-  }, [user, token]);
+  }, []);
 
   // Function to set both user and token
   const setUserAndToken = (userData, tokenData) => {
@@ -73,9 +49,13 @@ export function UserProvider({ children }) {
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem("user");
-    localStorage.removeItem("phishxray_user");
-    localStorage.removeItem("token");
+    try {
+      localStorage.removeItem("user");
+      localStorage.removeItem("phishxray_user");
+      localStorage.removeItem("token");
+    } catch (e) {
+      console.warn("UserContext localStorage cleanup error", e);
+    }
   };
 
   // Check if user is blocked
